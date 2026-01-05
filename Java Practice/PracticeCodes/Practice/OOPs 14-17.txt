@@ -1,0 +1,158 @@
+
+import java.util.*;
+
+abstract class Shape {
+	abstract double calculateArea();
+
+}
+class Circle extends Shape {
+	double radius;
+	public  Circle(double radius) {
+		this.radius=radius;
+	}
+	public double calculateArea() {
+		return Math.PI*radius*radius;
+	}
+}
+class Triangle extends Shape {
+	double base;
+	double height;
+	public  Triangle(double base,double height) {
+		this.base=base;
+		this.height=height;
+	}
+	public double calculateArea() {
+		return 0.5*base*height;
+	}
+}
+class Rectangle extends Shape{
+    double length;
+    double height;
+    public Rectangle(double length,double height){
+        this.length=length;
+        this.height=height;
+    }
+    public double calculateArea(){
+        return length*height;
+    }
+}
+
+
+class Main {
+	public static void main(String[] args) {
+		Shape c= new Circle(5);
+		System.out.println("Area of Circle:"+c.calculateArea());
+		Shape t=new Triangle(5,6);
+		System.out.println("Area of Triangle:"+t.calculateArea());
+		Shape r=new Rectangle(3.5,7.8);
+		System.out.println("Area of Recatngle:"+r.calculateArea());
+	}
+}
+======================================================================================================
+15)
+*******************************************************************************/
+import java.util.*;
+
+ class Animal{
+    void makeSound(){
+        System.out.println("Some Sound.....");
+    }
+}
+class Dog extends Animal{
+    void makeSound(){
+        
+        System.out.println(" barking......");
+    }
+}
+
+class Cat extends Dog{
+    void makeSound(){
+       
+        System.out.println("mewo.....");;
+    }
+}
+
+class Main {
+	public static void main(String[] args) {
+		Animal a= new Animal();
+		a.makeSound();
+		Animal d=new Dog();
+		d.makeSound();
+		Animal c=new Cat();
+		c.makeSound();
+	}
+}
+============================================================================================================
+16)
+import java.util.*;
+
+class Sport{
+    void play(){
+        System.out.println("Playing a sport");
+    }
+}
+class FootBall extends Sport{
+    void play(){
+    System.out.println("Playing football");
+    }
+}
+class BasketBall extends Sport{
+    void play(){
+    System.out.println("Playing basketball");
+    }
+}
+class Tennis extends Sport{
+    void play(){import java.util.*;
+
+abstract class Vehicle{
+    abstract void startEngine();
+    
+    abstract void stopEngine();
+    
+}
+class Car extends Vehicle{
+    public void startEngine(){
+        System.out.println("Car engine starts...");
+    }
+    public void stopEngine(){
+         System.out.println("Car engine stops...");
+    }
+}
+
+
+class MotarCycle extends Vehicle{
+    public void startEngine(){
+        System.out.println("MotarCycle engine starts...");
+    }
+    public void stopEngine(){
+         System.out.println("MotarCycle engine stops...");
+    }
+}
+class Main {
+	public static void main(String[] args) {
+	    Vehicle car1=new Car();
+	    car1.startEngine();
+	    car1.stopEngine();
+	    Vehicle mc1=new MotarCycle();
+	    mc1.startEngine();
+	    mc1.stopEngine();
+	    
+	}
+}
+    System.out.println("Playing tennis");
+    }
+}
+class Main {
+	public static void main(String[] args) {
+	    Sport d = new Sport();
+	    d.play();
+	    Sport a = new FootBall();
+	    a.play();
+	    Sport b = new BasketBall();
+	    b.play();
+	    Sport c = new Tennis();
+	    c.play();
+	}
+}
+===============================================================================================================
+17)

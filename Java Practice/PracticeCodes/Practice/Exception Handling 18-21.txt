@@ -1,0 +1,129 @@
+18)
+class InvalidAgeException extends Exception {
+   public InvalidAgeException(String message) {
+       super(message);
+   }
+}
+public class AgeValidator {
+   public static void validate(int age) throws InvalidAgeException {
+       if (age < 18) {
+           throw new InvalidAgeException("Age must be 18 or above.");
+       }
+       System.out.println("Valid age: " + age);
+   }
+   public static void main(String[] args) {
+       try {
+           validate(15);
+       } catch (InvalidAgeException e) {
+           System.out.println("Caught Exception: " + e.getMessage());
+       }
+   }
+}
+--------------------------------------------------------------------------------------------------------------
+19)
+import java.util.*;
+
+class InsufficientFunds extends Exception{
+    public InsufficientFunds(String message){
+        super(message);
+    }
+}
+class Account{
+    private double balance;
+    public  Account(double balance) {
+        this.balance=balance;
+    }
+    public void withdrawl(double amount) throws InsufficientFunds{
+        if(amount>balance){
+            throw new InsufficientFunds("Insufficient Funds!Avilable balance: "+balance);
+        }
+        balance-=amount;
+        System.out.println("Withdrawl successfully,remainung balance:"+balance);
+    }
+	public static void main(String[] args) {
+	    Account ac=new Account(500);
+	    try{
+	        ac.withdrawl(200);
+	    }catch(InsufficientFunds e){
+	        System.out.println("Error:"+e.getMessage());
+	    }
+	    
+	    
+	}
+}
+
+-------------------------------------------------------------------------------------------------------------
+20)
+import java.util.*;
+
+class InvalidEmailException extends Exception{
+    public InvalidEmailException(String message){
+        super(message);
+    }
+}
+class EmailValidater{
+    
+    public static void validateEmail(String email)throws InvalidEmailException {
+        
+    
+        if(email==null || !email.contains("@")|| !email.contains(".")){
+            throw new InvalidEmailException("Inavalid email entered   "  +email);
+        }
+        
+        System.out.println("valid email  "+email);
+    }
+}
+class Main{
+	public static void main(String[] args) {
+	    String[] emails={"user@gmail.com","ram@domain","what@mail.com"};
+	    for(String email:emails){
+	        try{
+	            EmailValidater.validateEmail(email);
+	        }
+	        catch(InvalidEmailException e){
+	        System.out.println("Error:"+e.getMessage());
+	    }
+	    }
+	   
+	    
+	    
+	}
+}
+-------------------------------------------------------------------------------------------------------------
+21)
+import java.util.*;
+
+class NegativeNumberException extends Exception{
+    public NegativeNumberException(String message){
+        super(message);
+    }
+}
+class Main{
+    
+    
+    public static int square(int num)throws NegativeNumberException {
+    
+        if(num<0){
+            throw new NegativeNumberException(" Negative numbers not allowed:"  +num);
+            
+        }
+        return num*num;
+    }
+	public static void main(String[] args) {
+	   try{
+	       System.out.println("Square of 5 is:"+square(5));
+	       System.out.println("Square of -5 is:"+square(-5));
+
+	   }catch(NegativeNumberException e){
+	       System.out.println("Error: " + e.getMessage());
+	   }
+	       
+	       
+	   }
+	   
+	    
+	    
+	
+}
+----------------------------------------------------------------------------------------------------------------
+
