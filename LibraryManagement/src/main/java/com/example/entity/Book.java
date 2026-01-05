@@ -3,8 +3,6 @@ package com.example.entity;
 import lombok.*;
 
 @Data
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -33,3 +31,4 @@ public class Book {
 	
 	
 }
+
