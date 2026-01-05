@@ -4,7 +4,7 @@ import lombok.*;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 
 public class Book {
 	
@@ -31,4 +31,5 @@ public class Book {
 	
 	
 }
+
 
