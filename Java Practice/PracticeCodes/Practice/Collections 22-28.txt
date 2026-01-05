@@ -1,8 +1,10 @@
 22)
+
 import java.util.*;
-class Main{
-    public static void main(String []args){
-        ArrayList<String> al=new ArrayList<>();
+
+class Main {
+    public static void main(String[] args) {
+        List<String> al = new ArrayList<>();
         al.add("Ram");
         al.add("Tej");
         al.add("Sam");
@@ -10,88 +12,133 @@ class Main{
         al.add("Tej");
         al.add("Sam");
         al.add("Sai");
-        System.out.println("Original list:"+al);
-        
-        LinkedHashSet<String> hs=new LinkedHashSet<>(al);
-        al.clear();
-        al.addAll(hs);
-        System.out.println("After removing duplicates:"+al);
+
+        System.out.println("Original list: " + al);
+
+        List<String> unique = removeDuplicatesPreserveOrder(al);
+        System.out.println("After removing duplicates: " + unique);
     }
-    
+
+    // Logic separated into a method
+    static <T> List<T> removeDuplicatesPreserveOrder(List<T> list) {
+        LinkedHashSet<T> set = new LinkedHashSet<>(list);
+        return new ArrayList<>(set);
+    }
 }
+``
+
 -----------------------------------------------------------------------------------------------------
 23)
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         List<String> list = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
-        Map<String, Integer> frequencyMap = new HashMap<>();
-        for (String item : list) {
-            frequencyMap.put(item, frequencyMap.getOrDefault(item, 0) + 1);
-        }
+
+        Map<String, Integer> frequencyMap = countFrequencies(list);
         System.out.println("Element Frequencies:");
-        for (Map.Entry<String, Integer> entry : frequencyMap.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        frequencyMap.forEach((k, v) -> System.out.println(k + " -> " + v));
+    }
+
+    // Logic separated into a method
+    static <T> Map<T, Integer> countFrequencies(List<T> items) {
+        Map<T, Integer> map = new HashMap<>();
+        for (T item : items) {
+            map.put(item, map.getOrDefault(item, 0) + 1);
         }
+        return map;
     }
 }
+``
 --------------------------------------------------------------------------------------------------------------
 24)
+
 import java.util.*;
-class Main{
-    public static void main(String []args){
-        Integer []arr=new Integer[]{2,6,6,4,3,2,5,2,4,4,2,5,2,4,2,9};
-        ArrayList<Integer> al=new ArrayList<>(Arrays.asList(arr));
-        
-        System.out.println("List with Duplicates:"+al);
-        Set<Integer> s=new HashSet<>();
-        Set<Integer> s1=new HashSet<>();
-        for(Integer num :al){
-            if(!s.add(num)){
-                s1.add(num);
+
+class Main {
+    public static void main(String[] args) {
+        Integer[] arr = new Integer[]{2, 6, 6, 4, 3, 2, 5, 2, 4, 4, 2, 5, 2, 4, 2, 9};
+        List<Integer> al = new ArrayList<>(Arrays.asList(arr));
+
+        System.out.println("List with Duplicates: " + al);
+        Set<Integer> duplicates = findDuplicates(al);
+        System.out.println("Duplicate Elements: " + duplicates);
+    }
+
+    // Logic separated into a method
+    static <T> Set<T> findDuplicates(Collection<T> items) {
+        Set<T> seen = new HashSet<>();
+        Set<T> dupes = new HashSet<>();
+        for (T item : items) {
+            if (!seen.add(item)) {
+                dupes.add(item);
             }
         }
-        System.out.println("Duplicate Elements:"+s1);
+        return dupes;
     }
-    
-    
 }
 ---------------------------------------------------------------------------------------------------------
 25)
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<String> l1 = Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple");
-       Collections.sort(l1);
-       System.out.println("Asending order:"+l1);
-       Collections.sort(l1,Collections.reverseOrder());
-       System.out.println("Desending order:"+l1);
+        List<String> l1 = new ArrayList<>(Arrays.asList("apple", "banana", "apple", "orange", "banana", "apple"));
+
+        List<String> asc = sortAscending(l1);
+        System.out.println("Ascending order: " + asc);
+
+        List<String> desc = sortDescending(l1);
+        System.out.println("Descending order: " + desc);
+    }
+
+    // Logic separated into methods
+    static <T extends Comparable<? super T>> List<T> sortAscending(List<T> list) {
+        List<T> copy = new ArrayList<>(list);
+        Collections.sort(copy);
+        return copy;
+    }
+
+    static <T extends Comparable<? super T>> List<T> sortDescending(List<T> list) {
+        List<T> copy = new ArrayList<>(list);
+        copy.sort(Collections.reverseOrder());
+        return copy;
     }
 }
 --------------------------------------------------------------------------------------------------------------
 26)
+
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Set<Integer> set1 =new HashSet<>(Arrays.asList(1,2,4,3,5));
-        Set<Integer> set2 =new HashSet<>(Arrays.asList(5,7,2,9,1,8));
-       
-       System.out.println("Set1:"+set1);
-       System.out.println("Set2:"+set2);
-       Set<Integer> unionset=new HashSet<>(set1);
-       unionset.addAll(set2);
-       System.out.println("Union of sets:"+unionset);
+        Set<Integer> set1 = new HashSet<>(Arrays.asList(1, 2, 4, 3, 5));
+        Set<Integer> set2 = new HashSet<>(Arrays.asList(5, 7, 2, 9, 1, 8));
+
+        System.out.println("Set1: " + set1);
+        System.out.println("Set2: " + set2);
+
+        Set<Integer> unionSet = union(set1, set2);
+        System.out.println("Union of sets: " + unionSet);
+    }
+
+    // Logic separated into a method
+    static <T> Set<T> union(Set<T> a, Set<T> b) {
+        Set<T> result = new HashSet<>(a);
+        result.addAll(b);
+        return result;
     }
 }
 ---------------------------------------------------------------------------------------------------------------
 27)
+
 import java.util.*;
-class Main{
-    public static void main(String []args){
-        PriorityQueue<Integer> pq=new PriorityQueue<>();
+
+class Main {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
         pq.offer(9);
         pq.add(1);
         pq.offer(4);
@@ -100,33 +147,51 @@ class Main{
         pq.add(3);
         pq.offer(3);
         pq.add(19);
-        System.out.println("PriorityQueue:"+pq);
-        pq.remove(4);
-        pq.poll();
-        System.out.println("PriorityQueue after removing some elements:"+pq);
-        pq.peek();
-        System.out.println(pq);
+
+        System.out.println("PriorityQueue: " + pq);
+
+        operatePriorityQueue(pq);
+        System.out.println("PriorityQueue after operations: " + pq);
+        Integer head = pq.peek();
+        System.out.println("Current head (peek): " + head);
     }
-    
+
+    // Logic separated into a method
+    static void operatePriorityQueue(PriorityQueue<Integer> pq) {
+        // Removes a single occurrence of element 4, if present
+        pq.remove(4);
+        // Removes and returns the head (smallest element in min-heap)
+        pq.poll();
+    }
 }
 ------------------------------------------------------------------------------------------------
 28)
+
 import java.util.*;
-class Main{
-    public static void main(String []args){
-        ArrayDeque<Integer> pq=new ArrayDeque<>();
-        pq.add(9);
-        pq.add(1);
-        pq.addFirst(4);
-        pq.addLast(2);
-        pq.add(8);
-        pq.add(3);
-        pq.removeFirst();
-        pq.removeLast();
-        System.out.println("PriorityQueue:"+pq);
-       
+
+class Main {
+    public static void main(String[] args) {
+        ArrayDeque<Integer> dq = new ArrayDeque<>();
+        dq.add(9);           // adds at tail
+        dq.add(1);
+        dq.addFirst(4);      // adds at head
+        dq.addLast(2);       // adds at tail
+        dq.add(8);
+        dq.add(3);
+
+        System.out.println("Deque before removals: " + dq);
+
+        performDequeOps(dq);
+        System.out.println("Deque after removals: " + dq);
     }
-    
+
+    // Logic separated into a method
+    static <T> void performDequeOps(ArrayDeque<T> deque) {
+        // Removes from head
+        deque.removeFirst();
+        // Removes from tail
+        deque.removeLast();
+    }
 }
 ---------------------------------------------------------------------------------------------------------
 
