@@ -1,0 +1,172 @@
+Streams:
+--------------------------------------------------------------------------------------------
+34)
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FilterEvenNumbersStream {
+    public static void main(String[] args) {
+        // Example input list
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        // Use Streams to filter even numbers
+        List<Integer> evenNumbers = numbers.stream()
+                                          .filter(num -> num % 2 ==0)
+                                          .collect(Collectors.toList());
+
+        // Print the result
+        System.out.println("Filtered list (even numbers only): " + evenNumbers);
+    }
+}
+
+-----------------------------------------------------------------------------------------------------
+35)
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class ConvertStringsToUppercase {
+    public static void main(String[] args) {
+        // Example input list
+        List<String> strings = Arrays.asList("apple", "banana", "cherry");
+
+        // Convert all strings to uppercase using Streams
+        List<String> upperCaseStrings = strings.stream()
+                                               .map(String::toUpperCase)
+                                               .collect(Collectors.toList());
+
+        // Print the result
+        System.out.println("Uppercase list: " + upperCaseStrings);
+    }
+}
+--------------------------------------------------------------------------------------------------------
+36)
+
+import java.util.Arrays;
+import java.util.List;
+
+public class SumOfIntegers {
+    public static void main(String[] args) {
+        // Example input list
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Calculate sum using Streams
+        int sum = numbers.stream()
+                         .mapToInt(Integer::intValue)
+                         .sum();
+
+        // Print the result
+        System.out.println("Sum of all integers: " + sum);
+    }
+}
+--------------------------------------------------------------------------------------------------------
+37)
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalInt;
+
+public class MaxValueWithStreams {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 7, 2, 9, 5);
+
+        OptionalInt maxOpt = findMax(numbers);
+
+        if (maxOpt.isPresent()) {
+            System.out.println("Maximum value: " + maxOpt.getAsInt());
+        } else {
+            System.out.println("The list is empty; no maximum value.");
+        }
+    }
+
+    // Separate method containing the max-finding logic using Streams
+    public static OptionalInt findMax(List<Integer> numbers) {
+        return numbers.stream()
+                      .mapToInt(Integer::intValue)
+                      .max();
+    }
+}
+---------------------------------------------------------------------------------------
+38)
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalInt;
+
+public class MinValueWithStreams {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 7, 2, 9, 5);
+
+        OptionalInt minOpt = findMin(numbers);
+
+        if (minOpt.isPresent()) {
+            System.out.println("Minimum value: " + minOpt.getAsInt());
+        } else {
+            System.out.println("The list is empty; no minimum value.");
+        }
+    }
+
+    // Separate method containing the min-finding logic using Streams
+    public static OptionalInt findMin(List<Integer> numbers) {
+        return numbers.stream()
+                      .mapToInt(Integer::intValue)
+                      .min();
+    }
+}
+--------------------------------------------------------------------------------------------------
+39)
+import java.util.Arrays;
+import java.util.List;
+
+public class CountElementsStream {
+    public static void main(String[] args) {
+        // Example input list
+        List<String> items = Arrays.asList("apple", "banana", "cherry");
+
+        // Call the separate method
+        long count = getElementCount(items);
+
+        System.out.println("Number of elements in the list: " + count);
+    }
+
+    // Separate method using Streams to count elements
+    public static long getElementCount(List<?> list) {
+        if (list == null) {
+            return 0; // Handle null list
+        }
+        return list.stream().count();
+    }
+}
+------------------------------------------------------------------------------------------------------------
+40)
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class SortStringsAlphabetically {
+    public static void main(String[] args) {
+        // Example input list
+        List<String> items = new ArrayList<>(Arrays.asList("banana", "Apple", "cherry", "date"));
+
+        // Call the separate method
+        sortAlphabetically(items);
+
+        System.out.println("Sorted list: " + items);
+    }
+
+    // Separate method that sorts the list in-place in natural (alphabetical) order
+    public static void sortAlphabetically(List<String> list) {
+        if (list == null) {
+            return; // Handle null list gracefully
+        }
+        Collections.sort(list); // Natural ordering (lexicographical, case-sensitive)
+    }
+}
+----------------------------------------------------------------------------------------------------
+41) 
+
+
